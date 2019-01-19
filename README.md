@@ -16,6 +16,12 @@ The message template and the last send date are fetched via IMAP to allow simple
 4. Store the message in sent folder
 5. Send the message
 
+## Todo
+
+- [ ] Use `SPECIAL-USE` to get sent and draft folder names
+- [ ] Make send interval configurable
+- [ ] Enhance documentation
+
 ## License
 
 GNU General Public License v3.0
