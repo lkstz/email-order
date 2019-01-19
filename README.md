@@ -15,3 +15,9 @@ The message template and the last send date are fetched via IMAP to allow simple
 3. Adjust some headers in the draft message
 4. Store the message in sent folder
 5. Send the message
+
+## License
+
+GNU General Public License v3.0
+
+See [LICENSE](https://github.com/kolletzki/email-order/blob/master/LICENSE) for full license text.
