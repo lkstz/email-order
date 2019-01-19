@@ -1,0 +1,28 @@
+# github.com/aws/aws-lambda-go v1.8.1
+github.com/aws/aws-lambda-go/events
+# github.com/emersion/go-imap v1.0.0-beta.1
+github.com/emersion/go-imap
+github.com/emersion/go-imap/client
+github.com/emersion/go-imap/utf7
+github.com/emersion/go-imap/commands
+github.com/emersion/go-imap/responses
+# github.com/emersion/go-message v0.9.1
+github.com/emersion/go-message
+github.com/emersion/go-message/charset
+# github.com/emersion/go-sasl v0.0.0-20161116183048-7e096a0a6197
+github.com/emersion/go-sasl
+# github.com/emersion/go-smtp v0.0.0-20190111112644-81d5952b6339
+github.com/emersion/go-smtp
+# github.com/emersion/go-textwrapper v0.0.0-20160606182133-d0e65e56babe
+github.com/emersion/go-textwrapper
+# github.com/martinlindhe/base36 v0.0.0-20180729042928-5cda0030da17
+github.com/martinlindhe/base36
+# golang.org/x/text v0.3.0
+golang.org/x/text/encoding
+golang.org/x/text/transform
+golang.org/x/text/encoding/charmap
+golang.org/x/text/encoding/japanese
+golang.org/x/text/encoding/simplifiedchinese
+golang.org/x/text/encoding/traditionalchinese
+golang.org/x/text/encoding/internal/identifier
+golang.org/x/text/encoding/internal
