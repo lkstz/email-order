@@ -2,7 +2,7 @@
 
 A small tool that sends an email from a draft.
 
-This tool was created for AWS Lambda function being invoked by an [AWS IoT button](https://aws.amazon.com/iotbutton/).
+This tool was originally created for an AWS Lambda function being invoked by an [AWS IoT button](https://aws.amazon.com/iotbutton/).
 The button's current purpose is to send an email to the local beverage dealer to order new beverages.
 
 A few configuration values aside, this tool does not depend on any data stored in S3 or something else.
@@ -10,7 +10,7 @@ The message template and the last send date are fetched via IMAP to allow simple
 
 ## Workflow
 
-1. Check if any messages, younger than a configurable timeout, are placed in the sent folder. If there are, then no new mail is sent.
+1. Check if any messages, younger than a configurable timeout, are placed in the sent folder. If there are, no new mail is sent.
 2. Get a draft from draft folder
 3. Adjust some headers in the draft message
 4. Store the message in sent folder
@@ -18,7 +18,7 @@ The message template and the last send date are fetched via IMAP to allow simple
 
 ## Configuration
 
-The configuration of this tool is done by setting environment variable values.
+The configuration of this tool is done by setting environment variables.
 
 ### `IMAP_ADDR`
 
@@ -28,7 +28,7 @@ Currently, plain IMAP is not supported.
 _Example:_
 
 ```bash
-export IMAP_ADDR=imap.host.com:993
+IMAP_ADDR=imap.host.com:993
 ```
 
 ### `SMTP_ADDR`
@@ -39,7 +39,7 @@ Currently, plain SMTP is not supported.
 _Example:_
 
 ```bash
-export SMTP_ADDR=smtp.host.com:465
+SMTP_ADDR=smtp.host.com:465
 ```
 
 ### `USER`
@@ -49,7 +49,7 @@ The username to use for IMAP and SMTP login.
 _Example:_
 
 ```bash
-export USER=user@host.com
+USER=user@host.com
 ```
 
 ### `PASS`
@@ -59,27 +59,27 @@ The password to use for IMAP and SMTP login.
 _Example:_
 
 ```bash
-export PASS=s3cr3tpassw0rd
+PASS=s3cr3tpassw0rd
 ```
 
 ### `SENT_MBOX`
 
-The name of the mailbox that contains sent items.
+The name of the mailbox (folder) that contains sent messages.
 
 _Example:_
 
 ```bash
-export SENT_MBOX=Sent
+SENT_MBOX=Sent
 ```
 
 ### `DRAFT_MBOX`
 
-The name of the mailbox that contains draft items.
+The name of the mailbox (foldeR) that contains draft messages.
 
 _Example:_
 
 ```bash
-export DRAFT_MBOX=Drafts
+DRAFT_MBOX=Drafts
 ```
 
 ### `WAIT_DAYS`
@@ -89,7 +89,7 @@ The number of days to wait until allowing the next email to be sent.
 _Example:_
 
 ```bash
-export WAIT_DAYS=7
+WAIT_DAYS=7
 ```
 
 ### `DRAFT_SEARCH`
@@ -99,7 +99,7 @@ The IMAP search key to filter for a draft.
 _Example:_
 
 ```bash
-export DRAFT_SEARCH=TO recipient@company.com
+DRAFT_SEARCH="TO recipient@company.com"
 ```
 
 ## Todo
@@ -108,6 +108,8 @@ export DRAFT_SEARCH=TO recipient@company.com
 - [x] Make send interval configurable
 - [ ] Enhance documentation
 - [ ] Allow specification of sent search key
+- [ ] Add tests
+- [ ] Automate build
 
 ## License
 
