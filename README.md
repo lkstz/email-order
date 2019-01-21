@@ -16,11 +16,98 @@ The message template and the last send date are fetched via IMAP to allow simple
 4. Store the message in sent folder
 5. Send the message
 
+## Configuration
+
+The configuration of this tool is done by setting environment variable values.
+
+### `IMAP_ADDR`
+
+Defines the IMAP server address and port.
+Currently, plain IMAP is not supported.
+
+_Example:_
+
+```bash
+export IMAP_ADDR=imap.host.com:993
+```
+
+### `SMTP_ADDR`
+
+Defines the SMTP server address and port.
+Currently, plain SMTP is not supported.
+
+_Example:_
+
+```bash
+export SMTP_ADDR=smtp.host.com:465
+```
+
+### `USER`
+
+The username to use for IMAP and SMTP login.
+
+_Example:_
+
+```bash
+export USER=user@host.com
+```
+
+### `PASS`
+
+The password to use for IMAP and SMTP login.
+
+_Example:_
+
+```bash
+export PASS=s3cr3tpassw0rd
+```
+
+### `SENT_MBOX`
+
+The name of the mailbox that contains sent items.
+
+_Example:_
+
+```bash
+export SENT_MBOX=Sent
+```
+
+### `DRAFT_MBOX`
+
+The name of the mailbox that contains draft items.
+
+_Example:_
+
+```bash
+export DRAFT_MBOX=Drafts
+```
+
+### `WAIT_DAYS`
+
+The number of days to wait until allowing the next email to be sent.
+
+_Example:_
+
+```bash
+export WAIT_DAYS=7
+```
+
+### `DRAFT_SEARCH`
+
+The IMAP search key to filter for a draft.
+
+_Example:_
+
+```bash
+export DRAFT_SEARCH=TO recipient@company.com
+```
+
 ## Todo
 
 - [ ] Use `SPECIAL-USE` to get sent and draft folder names
-- [ ] Make send interval configurable
+- [x] Make send interval configurable
 - [ ] Enhance documentation
+- [ ] Allow specification of sent search key
 
 ## License
 
