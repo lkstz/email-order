@@ -1,15 +1,15 @@
 package main
 
 import (
-	"fmt"
 	"github.com/aws/aws-lambda-go/events"
+	"github.com/aws/aws-lambda-go/lambda"
 )
 
 func main() {
-	//lambda.Start(Handler)
-	if err := PlaceOrder(); err != nil {
-		fmt.Println(err)
-	}
+	lambda.Start(Handler)
+	//if err := PlaceOrder(); err != nil {
+	//	fmt.Println(err)
+	//}
 }
 
 func Handler(_ events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
