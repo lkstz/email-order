@@ -16,6 +16,7 @@ import (
 	"math/rand"
 	"net/mail"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -30,6 +31,8 @@ var (
 
 	sentMbox  = os.Getenv("SENT_MBOX")
 	draftMbox = os.Getenv("DRAFT_MBOX")
+
+	waitDays int
 
 	draftSearch *imap.SearchCriteria
 
@@ -53,8 +56,15 @@ type orderMsg struct {
 func init() {
 	rand.Seed(time.Now().UnixNano())
 
+	// Parse wait days
+	env := os.Getenv("WAIT_DAYS")
+	var err error
+	if waitDays, err = strconv.Atoi(env); err != nil {
+		waitDays = 7
+	}
+
 	// Construct draft search criteria
-	env := os.Getenv("DRAFT_SEARCH")
+	env = os.Getenv("DRAFT_SEARCH")
 	parts := strings.Split(env, " ")
 
 	c := make([]interface{}, len(parts))
@@ -69,7 +79,6 @@ func init() {
 	}
 
 	// Create hostname
-	var err error
 	if hostname, err = os.Hostname(); err == nil {
 	} else {
 		hostname = "email-order"
@@ -151,7 +160,7 @@ func (o *order) canSend() (bool, error) {
 	}
 
 	s := imap.NewSearchCriteria()
-	s.Since = time.Now().AddDate(0, 0, -7)
+	s.Since = time.Now().AddDate(0, 0, waitDays*-1)
 	ids, err := o.imapClient.Search(s)
 	if err != nil {
 		return false, err
