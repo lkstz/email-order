@@ -202,7 +202,7 @@ func (o *order) getDraft() (*imap.Message, error) {
 	messages := make(chan *imap.Message, 1)
 	done := make(chan error, 1)
 	go func() {
-		done <- o.imapClient.Fetch(seqSet, []imap.FetchItem{section.FetchItem()}, messages)
+		done <- o.imapClient.UidFetch(seqSet, []imap.FetchItem{section.FetchItem()}, messages)
 	}()
 
 	var msg *imap.Message
